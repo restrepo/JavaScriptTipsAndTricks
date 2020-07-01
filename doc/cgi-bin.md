@@ -4,8 +4,30 @@ For debian (see [here](https://www.server-world.info/en/note?os=Debian_9&p=httpd
 ```bash
 sudo a2enmod cgid
 ```
-* Assuming the the repository was copied lik
+* Assuming the the repository was copied like
 ```
 sudo cp -r REPODIR/* /var/www/html
 ```
-it is necessary to configure the CGI directory of Apache to `/var/www/html/cgi-bin`
+it is necessary to configure the CGI directory of Apache to point to `/var/www/html/cgi-bin`. For that the `IfDefine` tag of `d` must looks like
+```xhtml
+       <IfDefine ENABLE_USR_LIB_CGI_BIN>
+                ScriptAlias /cgi-bin/ /var/www/html/cgi-bin/
+                <Directory "/var/www/html/cgi-bin">
+                  <!-- default contents here -->
+                  ...
+                </Directory>
+        </IfDefine>
+```
+* Restart Apache and [check script permissions](https://askubuntu.com/a/932719/678974) of the exectuable scripts. In this case just `hello.py`
+```bash
+systemctl restart apache2
+sudo chmod 755 /var/www/html/cgi-bin/hello.py
+```
+* Test that the script is working
+```bash
+$ curl http://localhost/cgi-bin/hello.py
+
+Hello world! /var/www/html/cgi-bin/hello.py
+```
+For a general Linux system check https://code-maven.com/set-up-cgi-with-apache
+
