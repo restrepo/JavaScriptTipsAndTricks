@@ -1,5 +1,17 @@
 # `cgi-bin` module in `apache2`
 For debian (see [here](https://www.server-world.info/en/note?os=Debian_9&p=httpd&f=2) for details)
+* Install Apache
+```bash
+sudo apt-get install apache2
+```
+* For test purposes, install also `curl`
+```bash
+sudo apt-get install curl
+```
+* Try the server
+```bash
+$ curl http://localhost
+```
 * Enable CGI module
 ```bash
 sudo a2enmod cgid
