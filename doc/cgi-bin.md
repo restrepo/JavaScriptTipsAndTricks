@@ -16,11 +16,11 @@ $ curl http://localhost
 ```bash
 sudo a2enmod cgid
 ```
-* Assuming the the repository was copied like
+* Assuming that the repository was copied in the server like
 ```
 sudo cp -r REPODIR/* /var/www/html
 ```
-it is necessary to configure the CGI directory of Apache to point to `/var/www/html/cgi-bin`. For that the `IfDefine` tag of `d` must looks like
+it is then necessary to configure the CGI directory of Apache to point to `/var/www/html/cgi-bin`. For that the `IfDefine` tag of the CGI configuration file at `/etc/apache2/conf-available/serve-cgi-bin.conf`, must looks like
 ```xhtml
        <IfDefine ENABLE_USR_LIB_CGI_BIN>
                 ScriptAlias /cgi-bin/ /var/www/html/cgi-bin/
