@@ -1,5 +1,6 @@
 # JavaScript
-Tips and Tricks for web development
+## Tips and Tricks for web development
+For a complete free course see https://www.freecodecamp.org/
 
 Browse as html:
 https://restrepo.github.io/JavaScriptTipsAndTricks/
